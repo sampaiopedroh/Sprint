@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { HomePage } from './pages/Home'
 import { AboutUs } from './pages/AboutUs'
 import { KeepUp } from './pages/KeepUp'
+// import { Chat } from './components/Chat'
+import { Calendar } from './components/Calendar'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    // <HomePage />
-    // <AboutUs />
-    <KeepUp />
+    <HomePage />
   )
 }
 

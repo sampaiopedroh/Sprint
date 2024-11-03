@@ -1,5 +1,3 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
 import React, { useRef, useEffect } from 'react';
 
 export const HomePage = () => {
@@ -14,8 +12,6 @@ export const HomePage = () => {
 
   return (
     <div className="bg-gray-100">
-      <Header />
-
       <div className="relative mt-[${headerHeight}px]"> 
         <video
           ref={videoRef}
@@ -75,8 +71,6 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };

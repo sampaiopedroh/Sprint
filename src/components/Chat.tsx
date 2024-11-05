@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 const Chat: React.FC = () => {
     const [messages, setMessages] = useState<string[]>([]);
     const [newMessage, setNewMessage] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const sendMessage = () => {
         if (newMessage.trim() !== '') {
             setMessages([...messages, newMessage]);
             setNewMessage('');
+            inputRef.current?.focus();
+        }
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            sendMessage();
         }
     };
 
@@ -24,9 +32,11 @@ const Chat: React.FC = () => {
 
                 <div className="flex items-center border rounded-lg bg-white p-2">
                     <input
+                        ref={inputRef} 
                         type="text"
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
+                        onKeyDown={handleKeyPress}
                         className="flex-grow border-none outline-none p-2"
                         placeholder="Digite sua mensagem..."
                     />
@@ -34,8 +44,6 @@ const Chat: React.FC = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.6 3.6 12 6l8.4 2.4 8.4-2.4 3.6 8.4-8.4-2.4z" />
                         </svg>
-
-
                     </button>
                 </div>
             </div>
